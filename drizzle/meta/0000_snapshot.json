@@ -1,11 +1,11 @@
 {
-  "id": "8b3c30d0-2040-47e9-819e-7e3a8c8e73fa",
+  "id": "f339370f-3ffe-4ec5-b1f2-9b9a453c1e20",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.contatos": {
-      "name": "contatos",
+    "public.links": {
+      "name": "links",
       "schema": "",
       "columns": {
         "id": {
@@ -14,34 +14,41 @@
           "primaryKey": true,
           "notNull": true
         },
-        "nome": {
-          "name": "nome",
+        "legenda": {
+          "name": "legenda",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "email": {
-          "name": "email",
+        "url": {
+          "name": "url",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "telefone": {
-          "name": "telefone",
-          "type": "text",
+        "codigo": {
+          "name": "codigo",
+          "type": "varchar(10)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "contatos_email_unique": {
-          "name": "contatos_email_unique",
+        "links_url_unique": {
+          "name": "links_url_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "email"
+            "url"
+          ]
+        },
+        "links_codigo_unique": {
+          "name": "links_codigo_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "codigo"
           ]
         }
       },

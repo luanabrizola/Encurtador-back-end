@@ -1,2 +1,9 @@
-// Arquivo: /src/infra/db/schema.js
-import { pgTable, uuid, text } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, text, varchar } from 'drizzle-orm/pg-core';
+
+// Definimos a tabela "links", espelhando a estrutura do nosso SQL
+export const links = pgTable('links', {
+    id: uuid('id').primaryKey(),
+    legenda: text('legenda').notNull(),
+    url: text('url').notNull().unique(),
+    codigo: varchar('codigo', { length: 10 }).notNull().unique(),
+});
