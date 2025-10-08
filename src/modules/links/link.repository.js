@@ -22,6 +22,11 @@ export class LinkRepository {
         return result[0] || null;
     }
 
+    async findByCodigo(codigo){
+        const result = await this.db.select().from(links).where(eq(links.codigo, codigo));
+        return result[0] || null;
+    }
+
     // Cria um novo link no banco de dados
     // Gera um ID único e insere os dados recebidos
     async create(linkData) {

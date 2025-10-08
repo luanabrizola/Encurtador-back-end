@@ -11,6 +11,10 @@ export class LinkService {
     getLinkById(id) {
         return this.linkRepository.findById(id);
     }
+    
+    getLinkByCodigo(codigo){
+        return this.linkRepository.findByCodigo(codigo);
+    }
 
     createLink(linkData) {
         // No futuro, regras de negócio como "verificar email duplicado"
