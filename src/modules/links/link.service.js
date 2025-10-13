@@ -11,12 +11,28 @@ export class LinkService {
     getLinkById(id) {
         return this.linkRepository.findById(id);
     }
-    
-    getLinkByCodigo(codigo){
+
+    getLinkByCodigo(codigo) {
         return this.linkRepository.findByCodigo(codigo);
     }
 
     createLink(linkData) {
+        const { url } = linkData
+        
+        function isValidUrl(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        if (!isValidUrl(url)) {
+            const error = new Error('URL_INVALIDA');
+            throw error;
+        }
+
         // No futuro, regras de negócio como "verificar email duplicado"
         // viveriam aqui, ANTES de chamar o repositório.
         return this.linkRepository.create(linkData);

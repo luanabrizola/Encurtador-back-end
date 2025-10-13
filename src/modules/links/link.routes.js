@@ -14,7 +14,7 @@ export async function linkRoutes(fastify, options) {
     fastify.get('/links/:id', (request, reply) =>
         linkController.getLinkById(request, reply)
     );
-    fastify.get('link/:codigo', (request, reply) =>
+    fastify.get('/link/:codigo', (request, reply) =>
         linkController.getLinkByCodigo(request, reply)
     );
     fastify.post('/links', (request, reply) =>

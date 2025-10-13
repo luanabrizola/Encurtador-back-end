@@ -32,12 +32,25 @@ export class LinkController {
     }
 
     async createLink(request, reply) {
-        const novoLink = await this.linkService.createLink(request.body);
+        try {
+            const novoLink = await this.linkService.createLink(request.body);
+            return reply.code(201).send({
+                message: 'Link criado com sucesso!',
+                link: novoLink
+            });
 
-        if (!novoLink) {
-            return reply.code(400).send({ message: 'Não foi possível criar o link' });
+        } catch (error) {
+            if (error.message === 'URL_INVALIDA') {
+                return reply.code(400).send({
+                    error: 'URL inválida: verifique se o formato está correto (ex: https://exemplo.com)'
+                });
+            }
+
+            return reply.code(500).send({
+                error: 'Erro interno ao criar o link.'
+            });
         }
-        return reply.code(201).send(novoLink);
+
     }
 
     async updateLink(request, reply) {
@@ -60,3 +73,4 @@ export class LinkController {
         return reply.code(204).send();
     }
 }
+
