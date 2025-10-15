@@ -16,7 +16,7 @@ export class LinkService {
         return this.linkRepository.findByCodigo(codigo);
     }
 
-    createLink(linkData) {
+    async createLink(linkData) {
         const { url } = linkData
         
         function isValidUrl(url) {
@@ -33,8 +33,26 @@ export class LinkService {
             throw error;
         }
 
-        // No futuro, regras de negócio como "verificar email duplicado"
-        // viveriam aqui, ANTES de chamar o repositório.
+
+        // Função para gerar código alfanumérico curto e unico
+        function gerarCodigo(tamanho = 6) {
+            const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let codigo = '';
+            for (let i = 0; i < tamanho; i++) {
+                codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+            }
+            return codigo;
+        }
+
+        let codigo;
+        let existente;
+
+        do {
+            codigo = gerarCodigo(6);
+            existente = await this.linkRepository.findByCodigo(codigo);
+        } while (existente);
+        linkData.codigo = codigo;
+
         return this.linkRepository.create(linkData);
     }
 

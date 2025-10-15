@@ -1,6 +1,5 @@
 import fastify from 'fastify';
 import { config } from 'dotenv';
-import { contatoRoutes } from './modules/links/link.routes.js';
 
 config();
 
