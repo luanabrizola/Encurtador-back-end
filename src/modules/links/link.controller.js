@@ -18,7 +18,7 @@ export class LinkController {
         if (!link) {
             return reply.code(404).send({ message: 'Link não encontrado' });
         }
-        return reply.send(link);
+        return reply.redirect(link.url);
     }
 
     async getLinkById(request, reply) {
