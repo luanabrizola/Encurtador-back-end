@@ -9,7 +9,7 @@ const server = fastify({ logger: true });
 const port = process.env.PORT || 3000;
 
 await server.register(cors, {
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173', 'https://encurtador-front-end.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 });
 
