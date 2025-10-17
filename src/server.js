@@ -6,7 +6,7 @@ import { linkRoutes } from './modules/links/link.routes.js';
 config();
 
 const server = fastify({ logger: true });
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 await server.register(cors, {
     origin: 'http://localhost:5173', 
@@ -15,7 +15,7 @@ await server.register(cors, {
 
 await server.register(linkRoutes);
 
-server.listen({ port }, (error) => {
+server.listen({ port, host: '0.0.0.0' }, (error) => {
     if (error) {
         console.error("Erro ao iniciar o servidor:", error);
         process.exit(1);
