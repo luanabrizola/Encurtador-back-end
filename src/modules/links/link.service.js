@@ -63,4 +63,15 @@ export class LinkService {
     deleteLink(id) {
         return this.linkRepository.remove(id);
     }
+
+    async incrementeClicks(codigo) {
+    const link = await this.linkRepository.findByCodigo(codigo);
+    if (!link) return null;
+
+    const linkAtualizado = await this.linkRepository.update(link.id, {
+        visualizacoes: (link.visualizacoes ?? 0) + 1
+    });
+
+    return linkAtualizado;
+    }
 }

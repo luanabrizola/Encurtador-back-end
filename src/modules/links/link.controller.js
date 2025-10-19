@@ -13,7 +13,7 @@ export class LinkController {
 
     async getLinkByCodigo(request, reply) {
         const { codigo } = request.params;
-        const link = await this.linkService.getLinkByCodigo(codigo);
+        const link = await this.linkService.incrementeClicks(codigo);
 
         if (!link) {
             return reply.code(404).send({ message: 'Link não encontrado' });
