@@ -15,10 +15,16 @@ await server.register(cors, {
 
 await server.register(linkRoutes);
 
-server.listen({ port, host: '0.0.0.0' }, (error) => {
-    if (error) {
-        console.error("Erro ao iniciar o servidor:", error);
-        process.exit(1);
-    }
-    console.log("Servidor executando na porta ", port);
+// rota raiz simples para evitar 404 em GET /
+server.get('/', async (request, reply) => {
+    return reply.send({ status: 'ok', message: 'API Encurtador rodando' });
 });
+
+// Iniciar servidor usando async/await para consistência
+try {
+    await server.listen({ port, host: '0.0.0.0' });
+    console.log('Servidor executando na porta', port);
+} catch (error) {
+    server.log.error('Erro ao iniciar o servidor:', error);
+    process.exit(1);
+}
