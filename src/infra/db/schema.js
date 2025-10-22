@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, varchar, integer } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, text, varchar, integer, timestamp } from 'drizzle-orm/pg-core';
 
 // Definimos a tabela "links", espelhando a estrutura do nosso SQL
 export const links = pgTable('links', {
@@ -7,4 +7,5 @@ export const links = pgTable('links', {
     url: text('url').notNull().unique(),
     codigo: varchar('codigo', { length: 10 }).notNull().unique(),
     visualizacoes: integer('visualizacoes').default(0),
+    criado_em: timestamp("criado_em").defaultNow().notNull(),
 });

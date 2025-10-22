@@ -15,6 +15,13 @@
       "when": 1761135941328,
       "tag": "0001_hesitant_baron_zemo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1761137130974,
+      "tag": "0002_familiar_sersi",
+      "breakpoints": true
     }
   ]
 }
