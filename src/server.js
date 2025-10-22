@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import cors from '@fastify/cors';
+import {fastifyCors} from '@fastify/cors';
 import { config } from 'dotenv';
 import { linkRoutes } from './modules/links/link.routes.js'; 
 
@@ -8,7 +8,7 @@ config();
 const server = fastify({ logger: true });
 const port = process.env.PORT || 3000;
 
-await server.register(cors, {
+await server.register(fastifyCors, {
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 });
