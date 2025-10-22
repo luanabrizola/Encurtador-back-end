@@ -12,7 +12,7 @@ O back-end do Encurtador de Links é responsável por criar, armazenar e gerenci
 
 ## 🌐 Link da Aplicação
 
-> **Back-end:** Hospedado no [Render](https://render.com/): [https://encurtador-backend.onrender.com](https://encurtador-backend.onrender.com)
+> **Back-end:** Hospedado no [Render](https://render.com/): [https://encurtador-back-endd.onrender.com](https://encurtador-back-endd.onrender.com)
 
 O back-end da aplicação está hospedado no Render e disponibiliza a API pública para criação, edição, exclusão e redirecionamento de links encurtados. Esse link permite que o front-end ou qualquer cliente faça requisições HTTP diretamente à API, sem necessidade de rodar o servidor localmente.
 
